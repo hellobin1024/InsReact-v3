@@ -14,6 +14,11 @@ var AddRelatedPersonInfo = React.createClass({
             customerId=this.customerId;
         }
 
+
+
+
+
+
         return ({
             data:null,customerId:customerId, frontImg:null, backImg:null
 
