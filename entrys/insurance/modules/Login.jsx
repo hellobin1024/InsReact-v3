@@ -31,6 +31,8 @@ var Login=React.createClass({
     login:function(){
 
         if(flag==0) {
+
+            var a=1;
             var loginPage = this.refs['loginPage'];
             var username = $(loginPage).find("input[name='username']").val();
             var password = $(loginPage).find("input[name='password']").val();
