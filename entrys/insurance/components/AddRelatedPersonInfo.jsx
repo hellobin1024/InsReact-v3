@@ -13,12 +13,6 @@ var AddRelatedPersonInfo = React.createClass({
         if(this.props.customerId!==undefined && this.props.customerId!==null){
             customerId=this.customerId;
         }
-
-
-
-
-
-
         return ({
             data:null,customerId:customerId, frontImg:null, backImg:null
 
