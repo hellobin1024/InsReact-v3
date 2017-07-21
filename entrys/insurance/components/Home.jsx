@@ -13,6 +13,7 @@ var Home=React.createClass({
                  style={{paddingLeft:'0px',background:'url('+App.getResourceDeployPrefix()+'/images/background.png) no-repeat',backgroundSize:'100%'}}>
                 <div className="in-container">
                     <HomePage />
+
                 </div>
                 <div className="footer">
                     <Footer />
