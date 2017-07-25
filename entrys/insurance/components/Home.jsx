@@ -9,6 +9,7 @@ import Footer from './Footer.jsx';
 var Home=React.createClass({
     render:function(){
         return(
+
             <div className='container'
                  style={{paddingLeft:'0px',background:'url('+App.getResourceDeployPrefix()+'/images/background.png) no-repeat',backgroundSize:'100%'}}>
                 <div className="in-container">
