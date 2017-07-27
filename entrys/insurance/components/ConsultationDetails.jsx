@@ -69,10 +69,8 @@ var ConsultationDetails = React.createClass({
 
     },
     saveOrUpdateQuestionContent:function(){
-        var url="/insurance/insuranceReactPageDataRequest.do";
+        var url="/func/insurance/saveOrUpdateProblemContent";
         var params={
-            reactPageName:'insurancePersonalCenterProblemPage',
-            reactActionName:'saveOrUpdateProblemContent',
             themeId:this.state.data[0].themeId,
             content:this.state.content,
             attachId:this.state.attachId,
@@ -84,7 +82,7 @@ var ConsultationDetails = React.createClass({
             fileData:this.state.img
 
         };
-        ProxyQ.queryHandle(
+        ProxyQ.query(
             'post',
             url,
             params,
@@ -103,15 +101,11 @@ var ConsultationDetails = React.createClass({
         );
     },
     getNotes:function(){
-        var url="/insurance/insuranceReactPageDataRequest.do";
-        var params={
-            reactPageName:'insurancePersonalCenterProblemPage',
-            reactActionName:'getUserInfo'
-        };
-        ProxyQ.queryHandle(
-            'post',
+        var url="/func/insurance/getUserInfo";
+        ProxyQ.query(
+            'get',
             url,
-            params,
+            null,
             null,
             function(ob) {
                 if(ob.data==this.state.personId){

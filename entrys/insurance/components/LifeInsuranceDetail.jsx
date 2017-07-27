@@ -34,10 +34,8 @@ var LifeDetail = React.createClass({
                 var payYears=$('#payYears option:selected').val();
                 var attachPayYears=$('#attachPayYears option:selected').val();
 
-                var url="/insurance/insuranceReactPageDataRequest.do";
+                var url="/func/insurance/getMeasure";
                 var params={
-                    reactPageName:'insuranceLifeProductCenterPage',
-                    reactActionName:'getMeasure',
                     productId:this.state.productId,
                     val:a,
                     age:this.state.age,
@@ -46,7 +44,7 @@ var LifeDetail = React.createClass({
                     personId:-1,
                     attachPayYears:attachPayYears//暂时未用
                 };
-                ProxyQ.queryHandle(
+                ProxyQ.query(
                     'post',
                     url,
                     params,
@@ -107,13 +105,11 @@ var LifeDetail = React.createClass({
     },
 
     getLifeBrief:function(){
-        var url="/insurance/insuranceReactPageDataRequest.do";
+        var url="/func/insurance/getLifeBrief";
         var params={
-            reactPageName:'insuranceLifeProductCenterPage',
-            reactActionName:'getLifeBrief',
             productId:this.state.productId
         };
-        ProxyQ.queryHandle(
+        ProxyQ.query(
             'post',
             url,
             params,
@@ -130,14 +126,12 @@ var LifeDetail = React.createClass({
         );
     },
     getProductFeeInfo:function(){
-        var url="/insurance/insuranceReactPageDataRequest.do";
+        var url="/func/insurance/getProductFeeInfo";
         var params={
-            reactPageName:'insuranceLifeProductCenterPage',
-            reactActionName:'getProductFeeInfo',
             productId:this.state.productId
         };
 
-        ProxyQ.queryHandle(
+        ProxyQ.query(
             'post',
             url,
             params,

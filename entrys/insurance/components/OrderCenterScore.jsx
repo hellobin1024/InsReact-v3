@@ -87,16 +87,11 @@ var OrderCenterScore=React.createClass({
     },
 
     initialData:function(){
-        var url="/insurance/insuranceReactPageDataRequest.do";
-        var params={
-            reactPageName:'insurancePersonalCenterCarOrderPage',
-            reactActionName:'getCustomerScore'
-        };
-
-        ProxyQ.queryHandle(
-            'post',
+        var url="/func/insurance/getCustomerScore";
+        ProxyQ.query(
+            'get',
             url,
-            params,
+            null,
             null,
             function(ob) {
                 var re = ob.re;

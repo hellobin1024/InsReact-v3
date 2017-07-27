@@ -27,8 +27,7 @@ var PersonInfo=React.createClass({
         }
     },
 
-    doSaveSelfInfo:function(ob){
-        var customerId=ob;
+    doSaveSelfInfo:function(){
         var selfPersonInfo = this.refs.selfPersonInfo;
         var perName=$(selfPersonInfo).find("input[name='perName']").val();
         var perIdCard=$(selfPersonInfo).find("input[name='perIdCard']").val();
@@ -49,10 +48,8 @@ var PersonInfo=React.createClass({
         } else {
             //this.showTips('提交成功~', 2500, 1);
 
-            var url="/insurance/insuranceReactPageDataRequest.do";
+            var url="/func/insurance/setInsuranceCustomerInfo";
             var params={
-                reactPageName:'insurancePersonalCenterPersonInfo',
-                reactActionName:'setInsuranceCustomerInfo',
                 customerId:this.state.customerId,
                 perName:perName,
                 perIdCard:perIdCard,
@@ -61,13 +58,13 @@ var PersonInfo=React.createClass({
                 address:address
             };
 
-            ProxyQ.queryHandle(
+            ProxyQ.query(
                 'post',
                 url,
                 params,
                 null,
-                function(ob) {
-
+                function(rep) {
+                    var a=rep;
                 }.bind(this),
                 function(xhr, status, err) {
                     console.error(this.props.url, status, err.toString());
@@ -77,13 +74,11 @@ var PersonInfo=React.createClass({
     },
 
     initialData:function(){
-        var url="/insurance/insuranceReactPageDataRequest.do";
+        var url="/func/insurance/getInsuranceCustomerInfo";
         var params={
-            reactPageName:'insurancePersonalCenterPersonInfo',
-            reactActionName:'getInsuranceCustomerInfo',
-        };
 
-        ProxyQ.queryHandle(
+        };
+        ProxyQ.query(
             'post',
             url,
             params,
@@ -94,7 +89,7 @@ var PersonInfo=React.createClass({
                     return;
                 }
                 var data=ob.data;
-                var customerId=ob.customerId;
+                var customerId=data.customerId;
                 this.setState({
                     data:data,
                     customerId:customerId
@@ -150,7 +145,7 @@ var PersonInfo=React.createClass({
                         </div>
                     </div>
                     <div className="toolBar">
-                        <a className="saveBtn btn_primary" href="javascript:;" onClick={this.doSaveSelfInfo.bind(null,this.state.customerId)}>保存</a>
+                        <a className="saveBtn btn_primary" href="javascript:;" onClick={this.doSaveSelfInfo}>保存</a>
                     </div>
                 </div>
         }else{

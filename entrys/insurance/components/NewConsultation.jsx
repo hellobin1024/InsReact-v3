@@ -20,13 +20,11 @@ var NewConsultation = React.createClass({
 
     },
     saveOrUpdateQuestion:function(){
-        var url="/insurance/insuranceReactPageDataRequest.do";
+        var url="/func/insurance/saveOrUpdateInsuranceProblem";
         var params={
-            reactPageName:'insurancePersonalCenterProblemPage',
-                reactActionName:'saveOrUpdateInsuranceProblem',
             theme:this.state.theme
         };
-        ProxyQ.queryHandle(
+        ProxyQ.query(
             'post',
             url,
             params,

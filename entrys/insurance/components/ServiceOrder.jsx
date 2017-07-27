@@ -44,16 +44,12 @@ var ServiceOrder=React.createClass({
     },
 
     initialData:function(){
-        var url="/insurance/insuranceReactPageDataRequest.do";
-        var params={
-            reactPageName:'insurancePersonalCenterCarServicePage',
-            reactActionName:'getInsuranceCarServiceOrder'
-        };
+        var url="/func/insurance/getInsuranceCarServiceOrder";
 
-        ProxyQ.queryHandle(
-            'post',
+        ProxyQ.query(
+            'get',
             url,
-            params,
+            null,
             null,
             function(ob) {
                 var re = ob.re;

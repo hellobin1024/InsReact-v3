@@ -66,15 +66,11 @@ var CarInsuranceBuyPage = React.createClass({
         }
     },
     getMyRelativeAndMyCar:function(){
-        var url="/insurance/insuranceReactPageDataRequest.do";
-        var params={
-            reactPageName:'insurancePersonalCenterScorePage',
-            reactActionName:'getMyRelativeAndMyCar'
-        };
-        ProxyQ.queryHandle(
-            'post',
+        var url="/func/insurance/getMyRelativeAndMyCar";
+        ProxyQ.query(
+            'get',
             url,
-            params,
+            null,
             null,
             function(ob) {
 
@@ -92,14 +88,12 @@ var CarInsuranceBuyPage = React.createClass({
         );
     },
     getCarInsurancesInfo:function(){
-        var url="/insurance/insuranceReactPageDataRequest.do";
+        var url="/func/insurance/getInsuranceCarProductInfo";
         var params={
-            reactPageName:'insuranceCarProductCenterPage',
-            reactActionName:'getInsuranceCarProductInfo',
             productName:this.state.info
         };
 
-        ProxyQ.queryHandle(
+        ProxyQ.query(
             'post',
             url,
             params,
@@ -122,15 +116,11 @@ var CarInsuranceBuyPage = React.createClass({
         );
     },
     getCarCompanies:function(){
-        var url="/insurance/insuranceReactPageDataRequest.do";
-        var params={
-            reactPageName:'insuranceProductCenterPage',
-            reactActionName:'getCarInsuranceCompany'
-        };
-        ProxyQ.queryHandle(
-            'post',
+        var url="/func/insurance/getCarInsuranceCompany";
+        ProxyQ.query(
+            'get',
             url,
-            params,
+            null,
             null,
             function(ob) {
                 this.setState({company:ob.data});
@@ -210,10 +200,8 @@ var CarInsuranceBuyPage = React.createClass({
                 });
                 this.state.update=c;
                 var b= c.join("-");
-                var url="/insurance/insuranceReactPageDataRequest.do";
+                var url="/func/insurance/createInsuranceCarOrder";
                 var params={
-                    reactPageName:'insurancePersonalCenterScorePage',
-                    reactActionName:'createInsuranceCarOrder',
                     update:b,
                     carId:this.state.selectCar,
                     companyId:this.state.selectCarCompany,
@@ -221,7 +209,7 @@ var CarInsuranceBuyPage = React.createClass({
 
                 };
 
-                ProxyQ.queryHandle(
+                ProxyQ.query(
                     'post',
                     url,
                     params,

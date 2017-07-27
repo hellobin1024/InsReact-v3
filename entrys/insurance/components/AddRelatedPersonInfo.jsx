@@ -67,10 +67,8 @@ var AddRelatedPersonInfo = React.createClass({
             this.showTips('请选择性别~');
         } else {
 
-            var url="/insurance/insuranceReactPageDataRequest.do";
+            var url="/func/insurance/addInsuranceRelatedPersonInfo";
             var params={
-                reactPageName:'insurancePersonalCenterPersonInfo',
-                reactActionName:'addInsuranceRelatedPersonInfo',
                 customerId:this.state.customerId,
                 relatedName:relatedName,
                 relType:relative,
@@ -81,7 +79,7 @@ var AddRelatedPersonInfo = React.createClass({
                 fileData2:this.state.backImg
             };
 
-            ProxyQ.queryHandle(
+            ProxyQ.query(
                 'post',
                 url,
                 params,

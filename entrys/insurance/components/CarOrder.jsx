@@ -103,16 +103,15 @@ var CarOrder=React.createClass({
             return;
         }
 
-        var url="/insurance/insuranceReactPageDataRequest.do";
+        var url="/func/insurance/ackInsuranceCarOrderState";
         var params={
-            reactPageName:'insurancePersonalCenterCarOrderPage',
-            reactActionName:'ackInsuranceCarOrderState',
+
             orderId:orderId,
             priceId:priceId
 
         };
 
-        ProxyQ.queryHandle(
+        ProxyQ.query(
            'post',
            url,
            params,
@@ -127,16 +126,13 @@ var CarOrder=React.createClass({
     },
 
     initialData:function(){
-        var url="/insurance/insuranceReactPageDataRequest.do";
-        var params={
-            reactPageName:'insurancePersonalCenterCarOrderPage',
-            reactActionName:'getInsuranceCarOrder'
-        };
+        var url="/func/insurance/getInsuranceCarOrder";
 
-        ProxyQ.queryHandle(
-            'post',
+
+        ProxyQ.query(
+            'get',
             url,
-            params,
+            null,
             null,
             function(ob) {
                 var re = ob.re;

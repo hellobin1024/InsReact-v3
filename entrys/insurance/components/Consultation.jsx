@@ -24,15 +24,12 @@ var Consultation = React.createClass({
         SyncStore.setRouter(ob);
     },
     getAllQuestion:function(){
-        var url="/insurance/insuranceReactPageDataRequest.do";
-        var params={
-            reactPageName:'insurancePersonalCenterProblemPage',
-            reactActionName:'getProblemList'
-        };
-        ProxyQ.queryHandle(
-            'post',
+        var url="/func/insurance/getProblemList";
+
+        ProxyQ.query(
+            'get',
             url,
-            params,
+            null,
             null,
             function(ob) {
                 this.setState({data:ob.data});
@@ -45,14 +42,12 @@ var Consultation = React.createClass({
         );
     },
     getQuestionContent:function(item,title,personId,date,comments){
-        var url="/insurance/insuranceReactPageDataRequest.do";
+        var url="/func/insurance/getProblemContent";
         var params={
-            reactPageName:'insurancePersonalCenterProblemPage',
-            reactActionName:'getProblemContent',
             themeId:item
         };
 
-        ProxyQ.queryHandle(
+        ProxyQ.query(
             'post',
             url,
             params,
@@ -78,15 +73,11 @@ var Consultation = React.createClass({
         this.state.comments=comments;
     },
     getMyQuestion:function(){
-        var url="/insurance/insuranceReactPageDataRequest.do";
-        var params={
-            reactPageName:'insurancePersonalCenterProblemPage',
-            reactActionName:'getMyProblem',
-        };
-        ProxyQ.queryHandle(
-            'post',
+        var url="/func/insurance/getMyProblem";
+        ProxyQ.query(
+            'get',
             url,
-            params,
+            null,
             null,
             function(ob) {
                 this.setState({data:ob.data});
@@ -100,16 +91,14 @@ var Consultation = React.createClass({
         );
     },
     getLimitQuestion:function(){
-        var url="/insurance/insuranceReactPageDataRequest.do";
+        var url="/func/insurance/getLimitProblem";
         var params={
-            reactPageName:'insurancePersonalCenterProblemPage',
-            reactActionName:'getLimitProblem',
             startDate:this.state.startData,
             endDate:this.state.endData,
             title:this.state.value
         };
 
-        ProxyQ.queryHandle(
+        ProxyQ.query(
             'post',
             url,
             params,

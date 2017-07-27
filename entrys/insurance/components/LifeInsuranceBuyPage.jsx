@@ -12,15 +12,12 @@ var SyncStore = require('../../../components/flux/stores/SyncStore');
 var ProxyQ = require('../../../components/proxy/ProxyQ');
 var LifeInsuranceBuyPage = React.createClass({
     getInsurant:function(){
-        var url="/insurance/insuranceReactPageDataRequest.do";
-        var params={
-            reactPageName:'insurancePersonalCenterScorePage',
-            reactActionName:'getInsurant'
-        };
-        ProxyQ.queryHandle(
-            'post',
+        var url="/func/insurance/getInsurant";
+
+        ProxyQ.query(
+            'get',
             url,
-            params,
+            null,
             null,
             function(ob) {
                 this.setState({data:ob.data});
@@ -43,13 +40,11 @@ var LifeInsuranceBuyPage = React.createClass({
         }else {
             if(compId==undefined){
                 var id=this.state.companyId;
-                var url = "/insurance/insuranceReactPageDataRequest.do";
+                var url = "/func/insurance/getChildCompany";
                 var params = {
-                    reactPageName: 'insuranceProductCenterPage',
-                    reactActionName: 'getChildCompany',
                     companyid: id
                 };
-                ProxyQ.queryHandle(
+                ProxyQ.query(
                     'post',
                     url,
                     params,
@@ -64,13 +59,11 @@ var LifeInsuranceBuyPage = React.createClass({
                     }.bind(this)
                 );
             }else {
-                var url = "/insurance/insuranceReactPageDataRequest.do";
+                var url = "/func/insurance/getChildCompany";
                 var params = {
-                    reactPageName: 'insuranceProductCenterPage',
-                    reactActionName: 'getChildCompany',
                     companyid: compId
                 };
-                ProxyQ.queryHandle(
+                ProxyQ.query(
                     'post',
                     url,
                     params,
@@ -163,16 +156,14 @@ var LifeInsuranceBuyPage = React.createClass({
                     var attachQuota = null;
                     var attachInsFee = $('#baseAttachInsFee' + i).val();
                     var a = attachInsFee / insuranceQuota;
-                    var url = "/insurance/insuranceReactPageDataRequest.do";
+                    var url = "/func/insurance/getMeasure";
                     var params = {
-                        reactPageName: 'insuranceLifeProductCenterPage',
-                        reactActionName: 'getMeasure',
                         productId: productId,
                         val: a,
                         payYears: this.state.selectInsFeeType,
                         personId: this.state.selectInsurant
                     };
-                    ProxyQ.queryHandle(
+                    ProxyQ.query(
                         'post',
                         url,
                         params,
@@ -276,16 +267,14 @@ var LifeInsuranceBuyPage = React.createClass({
 
                     // $(this.refs[""]).attr("","");//保险费
                     //查询保费
-                    var url = "/insurance/insuranceReactPageDataRequest.do";
+                    var url = "/func/insurance/getMeasure";
                     var params = {
-                        reactPageName: 'insuranceLifeProductCenterPage',
-                        reactActionName: 'getMeasure',
                         productId: productId,
                         val: a,
                         payYears: this.state.selectInsFeeType,
                         personId: this.state.selectInsurant
                     };
-                    ProxyQ.queryHandle(
+                    ProxyQ.query(
                         'post',
                         url,
                         params,
@@ -360,10 +349,8 @@ var LifeInsuranceBuyPage = React.createClass({
                         attachInsIds += item + ";";
                     })
                 }
-                var url = "/insurance/insuranceReactPageDataRequest.do";
+                var url = "/func/insurance/createInsuranceLifeOrder";
                 var params = {
-                    reactPageName: 'insurancePersonalCenterLifeOrderPage',
-                    reactActionName: 'createInsuranceLifeOrder',
                     productId: productId,
                     payYears: this.state.selectInsFeeType,
                     insurancederId: this.state.selectInsurant,
@@ -376,7 +363,7 @@ var LifeInsuranceBuyPage = React.createClass({
                     legalBenefit:this.state.selectLegalBenefit
 
                 };
-                ProxyQ.queryHandle(
+                ProxyQ.query(
                     'post',
                     url,
                     params,

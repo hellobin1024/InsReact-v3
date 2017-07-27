@@ -108,10 +108,8 @@ var AddRelatedCarInfo=React.createClass({
         } else if (issueDate == "") {
             this.showTips('请选择发证日期~');
         } else {
-            var url="/insurance/insuranceReactPageDataRequest.do";
+            var url="/func/insurance/addInsuranceRelatedCarInfo";
             var params={
-                reactPageName:'insurancePersonalCenterPersonInfo',
-                reactActionName:'addInsuranceRelatedCarInfo',
                 customerId:this.state.customerId,
                 carCity:carCity,
                 carNum:carNum,
@@ -125,7 +123,7 @@ var AddRelatedCarInfo=React.createClass({
                 issueDate:issueDate,
             };
 
-            ProxyQ.queryHandle(
+            ProxyQ.query(
                 'post',
                 url,
                 params,

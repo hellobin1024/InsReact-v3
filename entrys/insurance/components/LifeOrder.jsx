@@ -44,16 +44,11 @@ var LifeOrder=React.createClass({
     },
 
     initialData:function(){
-        var url="/insurance/insuranceReactPageDataRequest.do";
-        var params={
-            reactPageName:'insurancePersonalCenterLifeOrderPage',
-            reactActionName:'getInsuranceLifeOrder'
-        };
-
-        ProxyQ.queryHandle(
-            'post',
+        var url="/func/insurance/getInsuranceLifeOrder";
+        ProxyQ.query(
+            'get',
             url,
-            params,
+            null,
             null,
             function(ob) {
                 var re = ob.re;

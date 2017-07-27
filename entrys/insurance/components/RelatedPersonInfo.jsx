@@ -15,13 +15,11 @@ var ProxyQ = require('../../../components/proxy/ProxyQ');
 var RelatedPersonInfo=React.createClass({
 
     initialData:function(){
-        var url="/insurance/insuranceReactPageDataRequest.do";
+        var url="/func/insurance/getInsuranceRelatedPersonInfo";
         var params={
-            reactPageName:'insurancePersonalCenterPersonInfo',
-            reactActionName:'getInsuranceRelatedPersonInfo',
-        };
 
-        ProxyQ.queryHandle(
+        };
+        ProxyQ.query(
             'post',
             url,
             params,
