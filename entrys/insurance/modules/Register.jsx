@@ -5,6 +5,10 @@ var Register = React.createClass({
 
     render: function () {
 
+
+
+
+
             return (
                 <div id="container">
                     <div className="passport-sign">
