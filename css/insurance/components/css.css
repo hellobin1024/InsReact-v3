@@ -1186,6 +1186,7 @@ a:hover,.limitCnt p a:hover.loginLink,#footer a.ftsite:hover {
     border: 1px solid #b1cee8;
     margin-top: 10px;
     overflow: hidden;
+    margin-bottom:5%;
 }
 
 .product_B, .company_B, .partner_B {

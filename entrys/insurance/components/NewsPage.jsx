@@ -73,18 +73,18 @@ var NewsPage=React.createClass({
             params,
             null,
             function(response){
-                var data;
-                var ob=new Object();
-                if(Object.prototype.toString.call(response)!='[object Array]')
-                    if(response.data!==undefined&&response.data!==null)
-                        if(Object.prototype.toString.call(response.data)=='[object Array]')
-                            data=response.data;
-                        else
-                            data=response;
-                ob.data$initialed=true;
-                if(data!==undefined&&data!==null)
-                    ob.data=data;
-                this.setState(ob);
+                var data = response.data;
+                // var ob=new Object();
+                // if(Object.prototype.toString.call(response)!='[object Array]')
+                //     if(response.data!==undefined&&response.data!==null)
+                //         if(Object.prototype.toString.call(response.data)=='[object Array]')
+                //             data=response.data;
+                //         else
+                //             data=response;
+                // ob.data$initialed=true;
+                // if(data!==undefined&&data!==null)
+                //     ob.data=data;
+                // this.setState(ob);
             }.bind(this)
         )
 

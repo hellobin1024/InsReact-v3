@@ -23,7 +23,7 @@ var HomePageNav=React.createClass({
                     </div>
                     <div className="fr">
                         <ul className="link">
-                            <li className="tellHomePage">咨询热线：<i>0531-81188593</i></li>
+                            <li className="tellHomePage">咨询热线：<i>0531-55579340</i></li>
                         </ul>
                     </div>
                 </div>

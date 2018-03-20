@@ -27,27 +27,21 @@ const IMAGE_DATA = [
 
 var MainPage=React.createClass({
 
-    clickCb: function (data, detail, contentMapping) {
-        this.setState({data: data, hiddenInfo: detail, contentMapping: contentMapping, isEnter: true})
-    },
+    // clickCb: function (data, detail, contentMapping) {
+    //     this.setState({data: data, hiddenInfo: detail, contentMapping: contentMapping, isEnter: true})
+    // },
 
     initialData: function () {
         var url = "/func/allow/getNewsList";
 
         ProxyQ.query(
-            'get',
+            'POST',
             url,
+            {},
             null,
-            null,
-            function (response) {
-                var data;
-                if (Object.prototype.toString.call(response) != '[object Array]')
-                    if (response.data !== undefined && response.data !== null)
-                        if (Object.prototype.toString.call(response.data) == '[object Array]')
-                            data = response.data;
-                        else
-                            data = response;
-                this.setState({data: data});
+            function (res) {
+                var data = res;
+                this.setState({data:data.data});
             }.bind(this),
             function (xhr, status, err) {
                 console.error(this.props.url, status, err.toString());
@@ -129,9 +123,8 @@ var MainPage=React.createClass({
                                 <div className="company_img">
                                     <img alt=""
                                          src={window.App.getResourceDeployPrefix() + "/images/company.jpg"}></img>
-                                    捷惠保：立足于客户立场，深度发掘客户需求，客观分析，在众多保险产品中为客户选择适合的产品；
-                                    与保险主体公司深度合作，依据已有客户需求研发更多，保障全，保费低的优质产品；
-                                    为客户提供咨询，理赔，资料代管，车驾管服务等与保险相关的一站式服务。
+                                    山东纳利保险经纪有限公司是经中国保险监督管理委员会于2009年12月批准，于2010年1月成立的全国性、综合性保险经纪公司，
+                                    注册资本为人民币一千万元，公司总部设在山东济南。公司致力于全国范围内企业及个人客户拟定投保方案、选择保险人、办理投保手续..........
                                 </div>
                             </div>
 
@@ -147,7 +140,6 @@ var MainPage=React.createClass({
                                     <div>
                                         <NewsList
                                             data={this.state.data}
-                                            clickCb={this.clickCb}
                                         />
                                     </div>
                                 </div>
@@ -160,13 +152,13 @@ var MainPage=React.createClass({
                                 <div className="tell" style={{align:'left'}}>
                                     <i className="line_H">
                                     <span style={{color:'#337fe5',fontSize:'14px'}}>
-                                        <strong><span style={{fontSize:'14px'}}>0531-81188593</span></strong>
+                                        <strong><span style={{fontSize:'14px'}}>0531-55579340</span></strong>
                                     </span>
                                     </i> <br/>
                                     <em>
                                     <span style={{color:'#337fe5',fontSize:'14px'}}>
                                     <strong><span style={{fontSize:'14px'}}>地址：</span>
-                                        <span style={{fontSize:'14px'}}>济南市高新区汇展西路88号</span></strong>
+                                        <span style={{fontSize:'14px'}}>济南市历下区玉兰广场二号楼三层</span></strong>
                                     </span>
                                     </em>
                                     <span style={{fontSize:'14px'}}>&nbsp;</span><br/>

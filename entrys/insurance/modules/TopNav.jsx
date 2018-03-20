@@ -85,7 +85,8 @@ var TopNav=React.createClass({
                     </div>
                     <div className="fr">
                         <ul className="link">
-                            <li className="tell">咨询热线： <i>0531-81188593</i></li>
+                            <li className="tell">咨询热线： <i>0531-55579340</i></li>
+
                             {this.state.loginState ?
                                 <li className="plogin">
                                     <i  className="user" onClick={this.exit} style={{float:'right',width:'20px',cursor:'pointer',textDecoration:'underline'}} >
